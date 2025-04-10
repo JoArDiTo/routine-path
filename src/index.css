@@ -1,0 +1,22 @@
+@import "tailwindcss";
+
+#root {
+  flex-direction: column;
+  display: flex;
+  min-height: 100dvh;
+  justify-content: space-between;
+  background: #fff7ed;
+  font-family: 'Onest Variable', sans-serif;
+
+  main {
+    flex: 1;
+  }
+}
+
+@theme {
+  --color-cream-app: #fff7ed;
+  --color-black-app: #1d1f1e;
+  --color-green-app: #bef264;
+  --color-teal-app: #065f46;
+}
+/*#30e59d*/
