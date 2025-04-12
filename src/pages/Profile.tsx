@@ -3,12 +3,7 @@ import useFetch from "@hooks/useFetch";
 import MainLayout from "@layouts/MainLayout";
 import { getProfile } from "@lib/api";
 import { useContext } from "react";
-
-interface UserProfile {
-  firstname: string;
-  lastname: string;
-  email: string;
-}
+import { ProfileResponse } from "@interfaces/response";
 
 const ProfilePage = () => {
   const authContext = useContext(AuthContext);
@@ -20,7 +15,7 @@ const ProfilePage = () => {
     data: userData,
     loading: userLoading,
     error: userError,
-  } = useFetch<UserProfile>(() => getProfile())
+  } = useFetch<ProfileResponse>(() => getProfile())
 
   const handleOpenModal = () => {
     const dialog = document.getElementById('myDialog')
@@ -60,14 +55,14 @@ const ProfilePage = () => {
       </section>
 
       <dialog id="myDialog" className="top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-      <h2 className="font-semibold">¿Estás seguro que quieres cerrar sesión?</h2>
-      <div className="flex justify-center gap-x-3 pt-3 flex-wrap items-center text-white">
-        <form method="dialog">
-          <button className="px-4 py-2 rounded-lg bg-red-500 cursor-pointer">Cancelar</button>
-        </form>
-        <button onClick={ exit } className="px-4 py-2 rounded-lg bg-blue-500 cursor-pointer">Cerrar Sesión</button>
-      </div>
-    </dialog>
+        <h2 className="font-semibold">¿Estás seguro que quieres cerrar sesión?</h2>
+        <div className="flex justify-center gap-x-3 pt-3 flex-wrap items-center text-white">
+          <form method="dialog">
+            <button className="px-4 py-2 rounded-lg bg-red-500 cursor-pointer">Cancelar</button>
+          </form>
+          <button onClick={ exit } className="px-4 py-2 rounded-lg bg-blue-500 cursor-pointer">Cerrar Sesión</button>
+        </div>
+      </dialog>
     </MainLayout>
   )
 }

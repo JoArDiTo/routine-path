@@ -1,5 +1,5 @@
 import { toast } from "sonner";
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 import { register } from "@lib/api";
 
 const INPUTS = [
@@ -40,6 +40,7 @@ const INPUTS = [
 
 const RegisterPage = () => {
   document.title = "Routine Path | Registro";
+  const navigate = useLocation()[1];
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -65,8 +66,8 @@ const RegisterPage = () => {
 
     toast.success("Usuario creado, redirigiendo a inicio de sesión...");
     setTimeout(() => {
-      window.location.href = "/login";
-    }, 2000);
+      navigate("/login");
+    }, 1500);
 
   }
 
